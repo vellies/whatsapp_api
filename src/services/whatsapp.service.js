@@ -24,3 +24,36 @@ export const sendMessage = async (to, message) => {
     );
   }
 };
+
+export const sendTemplateMessage = async (to, templateName) => {
+  try {
+    const response = await axios.post(
+      `https://graph.facebook.com/v20.0/${ENV.PHONE_NUMBER_ID}/messages`,
+      {
+        messaging_product: "whatsapp",
+        to,
+        type: "template",
+        template: {
+          name: templateName,
+          language: {
+            code: "en_US",
+          },
+        },
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${ENV.WHATSAPP_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Template Message Error:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
