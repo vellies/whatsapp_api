@@ -19,6 +19,12 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/health", (req, res) => {
+  res.json({
+    status: "UP",
+    time: new Date()
+  });
+});
 
 app.listen(ENV.PORT, () => {
   console.log(`Server running on port ${ENV.PORT}`);
