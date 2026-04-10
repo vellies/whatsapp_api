@@ -2,7 +2,7 @@ require('dotenv').config()
 const axios = require('axios')
 const FormData = require('form-data')
 const fs = require('fs')
-const WHATSAPP_TOKEN_NEW = "EAANNALR7DscBRKlCUQVBUhuktRozRO0K9stddyqoCu5eXE3AZBDX7cZA0K7q2FJnLcc4whZCoZB8lO7ZBjcXQB5sVtqkPt7yjs2QPLsWzGE1CkFQJY0glTfUl25BVsAFzVKYc97si2oFqeU3TZC8H7yPAARSgskjES4GPJnycSuvFgDNHWZBe98OzTG5Ey2cXKKtLbNBZCImZCPbQ1RVVvZBpCzxUcYfUf17ENKCAw0S7Ce2TxZApivVlzhvhTs6LFEfBKJPxZAW04SRXPOJjHefKONNAf2lVsb2K04eOXUZD"
+const WHATSAPP_TOKEN_NEW = "EAANNALR7DscBRGTN2rxCfxpUi9yO9NWEylBrRvqLjwRRAuFt5xUlj7dys09gzgfNYMCUxW3E6Ne09a8teDIhZAzvA3Ku4depunmHAHf3fSo2Q3rrmzIr2V47vOmdk0NG1ZCcY3fUqJFHUeWvVF09BsCnUflEz3fZAJKuXHyq28j6A007DZA1d77cr5qHdrvKSWI98UZCMvjeMDj0sch6KPCuWCxdcLH9Hyl2ZAjCwdFDns8gyfglqGqgFREKSkr5QyHCmKtw0AHvUGtehey5CHQjc0sZCqVAEqdugZDZD"
 async function sendTemplateMessage() {
     const response = await axios({
         url: 'https://graph.facebook.com/v20.0/1053282284535537/messages',
@@ -16,7 +16,7 @@ async function sendTemplateMessage() {
             to: '919751847178',
             type: 'template',
             template: {
-                name: 'lead_followup_demo',
+                name: 'hello_world',
                 language: {
                     code: 'en_US'
                 }
@@ -28,7 +28,6 @@ async function sendTemplateMessage() {
 }
 
 async function sendTextMessage() {
-    console.log('====' + WHATSAPP_TOKEN_NEW + '====');
     const response = await axios({
         url: 'https://graph.facebook.com/v22.0/1053282284535537/messages',
         method: 'post',
@@ -89,9 +88,9 @@ async function uploadImage() {
     console.log(response.data)
 }
 
-sendTemplateMessage()
+// sendTemplateMessage()
 
-// sendTextMessage()
+sendTextMessage()
 
 // sendMediaMessage()
 
